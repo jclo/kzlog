@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.0.2 (April 19, 2019)
+
+  * Fixed more wrong npm path for the badges,
+  * ...,
+
+
 ### 0.0.1 (April 19, 2019)
 
   * Fixed wrong npm path for the badges,

@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/kzlog",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A minimal lightweight logging library for JavaScript",
   "main": "index.js",
   "bin": {},
