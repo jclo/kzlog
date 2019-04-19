@@ -68,10 +68,10 @@ The default threshold level is `trace`. It can be set to `trace`, `debug`, `info
 [devdependencies-image]: https://david-dm.org/jclo/kzlog/dev-status.svg?theme=shields.io
 [license-image]: https://img.shields.io/npm/l/kzlog.svg?style=flat-square
 
-[npm-url]: https://www.npmjs.com/package/kzlog
-[npm-install-url]: https://nodei.co/npm/kzlog
+[npm-url]: https://www.npmjs.com/package/@mobilabs/kzlog
+[npm-install-url]: https://nodei.co/npm/@mobilabs/kzlog
 [node-url]: http://nodejs.org/download
-[download-url]: https://www.npmjs.com/package/kzlog
+[download-url]: https://www.npmjs.com/package/@mobilabs/kzlog
 [travis-url]: https://travis-ci.org/jclo/kzlog
 [coveralls-url]: https://coveralls.io/github/jclo/kzlog?branch=master
 [dependencies-url]: https://david-dm.org/jclo/kzlog

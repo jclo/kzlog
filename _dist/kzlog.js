@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * KZlog v0.0.0
+ * KZlog v0.0.1
  *
  * A minimal lightweight logging library for JavaScript.
  * (you can download it from npm or github repositories)
@@ -262,7 +262,7 @@
     previousKZlog = root.KZlog;
 
     // Current version of the library:
-    KZlog.VERSION = '0.0.0';
+    KZlog.VERSION = '0.0.1';
 
 
     // -- Public Static Methods ----------------------------------------------
@@ -331,7 +331,7 @@
        * @since 0.0.0
        */
       version: function() {
-        return '0.0.0';
+        return '0.0.1';
       },
 
       /**
