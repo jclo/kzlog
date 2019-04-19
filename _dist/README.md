@@ -58,15 +58,15 @@ The default threshold level is `trace`. It can be set to `trace`, `debug`, `info
 
 <!--- URls -->
 
-[npm-image]: https://img.shields.io/npm/v/kzlog.svg?style=flat-square
-[npm-install-image]: https://nodei.co/npm/kzlog.png?compact=true
+[npm-image]: https://img.shields.io/npm/v/@mobilabs/kzlog.svg?style=flat-square
+[npm-install-image]: https://nodei.co/npm/@mobilabs/kzlog.png?compact=true
 [node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
-[download-image]: https://img.shields.io/npm/dm/kzlog.svg?style=flat-square
+[download-image]: https://img.shields.io/npm/dm/@mobilabs/kzlog.svg?style=flat-square
 [travis-image]: https://img.shields.io/travis/jclo/kzlog.svg?style=flat-square
 [coveralls-image]: https://img.shields.io/coveralls/jclo/kzlog/master.svg?style=flat-square
 [dependencies-image]: https://david-dm.org/jclo/kzlog/status.svg?theme=shields.io
 [devdependencies-image]: https://david-dm.org/jclo/kzlog/dev-status.svg?theme=shields.io
-[license-image]: https://img.shields.io/npm/l/kzlog.svg?style=flat-square
+[license-image]: https://img.shields.io/npm/l/@mobilabs/kzlog.svg?style=flat-square
 
 [npm-url]: https://www.npmjs.com/package/@mobilabs/kzlog
 [npm-install-url]: https://nodei.co/npm/@mobilabs/kzlog

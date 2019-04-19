@@ -3,7 +3,7 @@
 ### 0.0.2 (April 19, 2019)
 
   * Fixed more wrong npm path for the badges,
-  * ...,
+  * Release.
 
 
 ### 0.0.1 (April 19, 2019)
