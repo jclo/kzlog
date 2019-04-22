@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/kzlog",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A minimal lightweight logging library for JavaScript",
   "main": "index.js",
   "bin": {},
@@ -8,6 +8,7 @@
     "build": "gulp build",
     "watch": "gulp watch",
     "makedist": "gulp makedist",
+    "publish": "npm publish --access public",
     "test": "cross-env NODE_ENV=test nyc --reporter=lcov mocha ./test/main.js",
     "check-coverage": "nyc check-coverage --statements 100 --branches 70 --functions 100 --lines 100",
     "display-coverage": "opener ./coverage/lcov-report/index.html",
@@ -16,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/jclo/kzlog.git"
   },
   "keywords": [
     "javascript",
@@ -41,17 +42,20 @@
     "eslint": "5.16.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.17.2",
-    "gulp": "4.0.0",
+    "gulp": "4.0.1",
     "gulp-concat": "2.6.1",
     "gulp-footer": "2.0.2",
     "gulp-header": "2.0.7",
     "gulp-replace": "1.0.0",
     "gulp-uglify": "3.0.2",
     "husky": "1.3.1",
-    "mocha": "6.1.3",
+    "mocha": "6.1.4",
     "nyc": "14.0.0",
     "opener": "1.5.1",
     "sinon": "7.3.2"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "private": false,
   "husky": {
