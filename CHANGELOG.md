@@ -3,7 +3,7 @@
 ### 0.0.3 (April 22, 2019)
 
   * Completed package.json,
-  * ...,
+  * Release.
 
 
 ### 0.0.2 (April 19, 2019)
