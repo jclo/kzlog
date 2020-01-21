@@ -1,9 +1,9 @@
 /*! ****************************************************************************
- * KZlog v0.0.3
+ * KZlog v0.0.4
  *
  * A minimal lightweight logging library for JavaScript.
  * (you can download it from npm or github repositories)
- * Copyright (c) 2019 Jclo <jclo@mobilabs.fr> (https://www.mobilabs.fr).
+ * Copyright (c) 2020 Jclo <jclo@mobilabs.fr> (https://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
  * ************************************************************************** */
@@ -23,6 +23,10 @@
     // only CommonJS-like environments that support module.exports,
     // like Node.
     module.exports = factory(root);
+    // This is a hack to attach the lib to the browser root when this lib is
+    // included inside another lib and the whole is browserifyied:
+    /* eslint-disable-next-line no-param-reassign */
+    if (root.KZlog === null) root.KZlog = factory(root);
   } else {
     // Browser globals.
     /* eslint-disable-next-line no-param-reassign */
@@ -262,7 +266,7 @@
     previousKZlog = root.KZlog;
 
     // Current version of the library:
-    KZlog.VERSION = '0.0.3';
+    KZlog.VERSION = '0.0.4';
 
 
     // -- Public Static Methods ----------------------------------------------
@@ -331,7 +335,7 @@
        * @since 0.0.0
        */
       version: function() {
-        return '0.0.3';
+        return '0.0.4';
       },
 
       /**

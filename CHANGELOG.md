@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.0.4 (January 21, 2020)
+
+  * Added the capability to the library to be browserified,
+  * ...,
+
+
 ### 0.0.3 (April 22, 2019)
 
   * Completed package.json,
