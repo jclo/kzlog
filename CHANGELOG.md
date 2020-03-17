@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.0.5 (March 17, 2020)
+
+  * Updated the project with the latest ES6lib boilerplate,
+  * ...,
+
+
 ### 0.0.4 (January 21, 2020)
 
   * Added the capability to the library to be browserified,

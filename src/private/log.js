@@ -15,7 +15,7 @@
  *
  *
  *
- * @namespace LG.Public
+ * @namespace LG
  * @exports   -
  * @author    -
  * @since     0.0.0
@@ -33,9 +33,9 @@
 
 
   // -- Local constants
-  var DEFAULT_LEVEL = 'trace'
-    , LEVELS = ['trace', 'debug', 'info', 'warn', 'error', 'fatal', 'off']
-    ;
+  const DEFAULT_LEVEL = 'trace'
+      , LEVELS = ['trace', 'debug', 'info', 'warn', 'error', 'fatal', 'off']
+      ;
 
 
   // -- Local variables
@@ -48,8 +48,8 @@
    *
    * @function ()
    * @private
-   * @param {}            -,
-   * @returns {Array}     returns the default level,
+   * @param {}              -,
+   * @returns {Array}       returns the default level,
    * @since 0.0.0
    */
   /* istanbul ignore next */
@@ -62,8 +62,8 @@
    *
    * @function ()
    * @private
-   * @param {}            -,
-   * @returns {Array}     returns the defined levels,
+   * @param {}              -,
+   * @returns {Array}       returns the defined levels,
    * @since 0.0.0
    */
   function _levels() {
@@ -73,7 +73,7 @@
 
   // -- Public Static Methods ------------------------------------------------
 
-  LG.Public = {
+  LG = {
 
     /**
      * Dumps, to the console, the logging message.
@@ -87,23 +87,15 @@
      * @since 0.0.0
      */
     /* eslint-disable no-param-reassign */
-    print: function(log, msg, currentlevel) {
-      var levels
-        , colors
-        , date
-        , stringDate
-        ;
+    print(log, msg, currentlevel) {
+      const levels = _levels()
+          , colors = [32, 36, 34, 33, 35, 31, 0]
+          , date   = new Date()
+          ;
 
-      levels = _levels();
-      colors = [32, 36, 34, 33, 35, 31, 0];
-      date = new Date();
-      stringDate = '[' + date.getFullYear() + '-'
-                       + (date.getMonth() + 1) + '-'
-                       + date.getDate() + ' '
-                       + date.getHours() + ':'
-                       + date.getMinutes() + ':'
-                       + date.getSeconds() + ':'
-                       + date.getMilliseconds() + ']';
+      let stringDate = `[${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}  `;
+      stringDate += `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()}`;
+      stringDate += ']';
 
       if (!log.level) {
         /* istanbul ignore next */
@@ -115,22 +107,26 @@
         log.highlight = true;
       }
 
+      let message;
       if (levels.indexOf(currentlevel) >= levels.indexOf(log.level)) {
         if (log.highlight === true) {
-          console.log(stringDate + ' [' + currentlevel + '] '
-                                 + '\u001b[1;' + colors[levels.indexOf(currentlevel)]
-                                 + 'm' + log.name + ':\u001b[0m ' + msg);
+          const ctags = `\u001b[1;${colors[levels.indexOf(currentlevel)]}m`;
+          const ctage = '\u001b[0m';
+
+          message = `${stringDate} [${ctags}${currentlevel}${ctage}] `;
+          message += `${log.name}: ${msg}`;
         } else {
           /* istanbul ignore next */
-          console.log(stringDate + ' [' + currentlevel + '] ' + log.name + ': ' + msg);
+          message = `${stringDate} [${currentlevel}] ${log.name}: ${msg}`;
         }
+        console.log(message);
         if (typeof msg === 'object') {
           // to visualize content of the object instead of [object Object] only.
           /* istanbul ignore next */
           console.log(msg);
         }
       }
-    }
+    },
   };
   /* eslint-enable no-param-reassign */
 }());

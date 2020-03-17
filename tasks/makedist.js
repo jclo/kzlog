@@ -9,13 +9,12 @@ const { src, dest, series, parallel } = require('gulp')
     , concat  = require('gulp-concat')
     , header  = require('gulp-header')
     , replace = require('gulp-replace')
-    , uglify  = require('gulp-uglify')
+    , uglify  = require('gulp-uglify-es').default
     ;
 
 
 // -- Local modules
 const config = require('./config')
-    , pack   = require('../package.json')
     ;
 
 
@@ -50,27 +49,17 @@ function doskeleton() {
 function copydev() {
   return src(`${libdir}/${name}.js`)
     .pipe(header(license))
-    .pipe(replace('{{lib:name}}', `${libname}`))
-    .pipe(replace('{{lib:version}}', pack.version))
-    .pipe(replace('{{lib:description}}', pack.description))
-    .pipe(replace('{{lib:author}}', pack.author.name))
-    .pipe(replace('{{lib:email}}', pack.author.email))
-    .pipe(replace('{{lib:url}}', pack.author.url))
-    .pipe(dest(dist));
+    .pipe(dest(`${dist}/lib`));
 }
 
 // Copies the development version without parent.
 function makenoparentlib() {
   return src(`${libdir}/${name}${noparent}.js`)
     .pipe(header(license))
-    .pipe(replace('{{lib:name}}', `${libname}`))
-    .pipe(replace('{{lib:version}}', pack.version))
-    .pipe(replace('{{lib:description}}', pack.description))
-    .pipe(replace('{{lib:author}}', pack.author.name))
-    .pipe(replace('{{lib:email}}', pack.author.email))
-    .pipe(replace('{{lib:url}}', pack.author.url))
+    .pipe(replace('/*! *', '/** *'))
+    .pipe(replace('/* global define */', '/* global */'))
     .pipe(replace(/ {2}'use strict';\n\n/g, ''))
-    .pipe(dest(dist));
+    .pipe(dest(`${dist}/lib`));
 }
 
 // Creates the minified version.
@@ -78,14 +67,8 @@ function makeminified() {
   return src(`${libdir}/${name}.js`)
     .pipe(uglify())
     .pipe(header(license))
-    .pipe(replace('{{lib:name}}', `${libname}`))
-    .pipe(replace('{{lib:version}}', pack.version))
-    .pipe(replace('{{lib:description}}', pack.description))
-    .pipe(replace('{{lib:author}}', pack.author.name))
-    .pipe(replace('{{lib:email}}', pack.author.email))
-    .pipe(replace('{{lib:url}}', pack.author.url))
     .pipe(concat(`${name}.min.js`))
-    .pipe(dest(dist));
+    .pipe(dest(`${dist}/lib`));
 }
 
 

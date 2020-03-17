@@ -1,17 +1,19 @@
 /*! ****************************************************************************
- * KZlog v0.0.4
+ * KZlog v0.0.5
  *
  * A minimal lightweight logging library for JavaScript.
  * (you can download it from npm or github repositories)
- * Copyright (c) 2020 Jclo <jclo@mobilabs.fr> (https://www.mobilabs.fr).
+ * Copyright (c) 2020 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
+ * Built from ES6lib v0.0.10.
  * ************************************************************************** */
-// Based on UMD Lib template v0.8.4
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"] */
 (function(root, factory) {
+  'use strict';
+
   /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
@@ -20,6 +22,7 @@
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
+    /* eslint-disable-next-line no-param-reassign */
     module.exports = factory(root);
     // This is a hack to attach the lib to the browser root when this lib is
     // included inside another lib and the whole is browserifyied:
@@ -30,155 +33,19 @@
     /* eslint-disable-next-line no-param-reassign */
     root.KZlog = factory(root);
   }
-}({{lib:parent}}, function(root) {
+}(this, (root) => {
+  'use strict';
+
   // These are the global variables accessible everywhere inside this module.
   // 'KZlog' is the variable that defines this library and it is the only
   // variable accessible outside this module.
   // 'LG' is an object that exports public methods from the IIFE module
   // in which they are defined.
   /* eslint-disable one-var, semi-style */
-  var KZlog
+  let KZlog
     , LG = {}
     ;
-
   /* eslint-enable one-var, semi-style */
-
-  /** **************************************************************************
-   *
-   * Implements the functions used by KZlog.
-   *
-   * log.js is just a literal object that contains a set of functions. It
-   * can't be intantiated.
-   *
-   * Private Functions:
-   *  . _default                    returns the default level,
-   *  . _levels                     returns the defined levels,
-   *
-   *
-   * Public Static Methods:
-   *  . print                       dumps, to the console, the logging message,
-   *
-   *
-   *
-   * @namespace LG.Public
-   * @exports   -
-   * @author    -
-   * @since     0.0.0
-   * @version   -
-   * ************************************************************************ */
-  /* eslint-disable one-var, semi-style, no-underscore-dangle */
-
-  (function() {
-    // IIFE
-
-
-    // -- Local modules
-
-
-    // -- Local constants
-    var DEFAULT_LEVEL = 'trace'
-      , LEVELS = ['trace', 'debug', 'info', 'warn', 'error', 'fatal', 'off']
-      ;
-
-
-    // -- Local variables
-
-
-    // -- Private Functions ----------------------------------------------------
-
-    /**
-     * Returns the default level.
-     *
-     * @function ()
-     * @private
-     * @param {}            -,
-     * @returns {Array}     returns the default level,
-     * @since 0.0.0
-     */
-    /* istanbul ignore next */
-    function _default() {
-      return DEFAULT_LEVEL;
-    }
-
-    /**
-     * Returns the defined levels.
-     *
-     * @function ()
-     * @private
-     * @param {}            -,
-     * @returns {Array}     returns the defined levels,
-     * @since 0.0.0
-     */
-    function _levels() {
-      return LEVELS;
-    }
-
-
-    // -- Public Static Methods ------------------------------------------------
-
-    LG.Public = {
-
-      /**
-       * Dumps, to the console, the logging message.
-       *
-       * @method (arg1, arg2)
-       * @public
-       * @param {Object}    the log object,
-       * @param {String}    the message to print,
-       * @param {String}    the level of the message,
-       * @returns {}        -,
-       * @since 0.0.0
-       */
-      /* eslint-disable no-param-reassign */
-      print: function(log, msg, currentlevel) {
-        var levels
-          , colors
-          , date
-          , stringDate
-          ;
-
-        levels = _levels();
-        colors = [32, 36, 34, 33, 35, 31, 0];
-        date = new Date();
-        stringDate = '[' + date.getFullYear() + '-'
-                         + (date.getMonth() + 1) + '-'
-                         + date.getDate() + ' '
-                         + date.getHours() + ':'
-                         + date.getMinutes() + ':'
-                         + date.getSeconds() + ':'
-                         + date.getMilliseconds() + ']';
-
-        if (!log.level) {
-          /* istanbul ignore next */
-          log.level = _default();
-        }
-
-        if (log.highlight === undefined) {
-          /* istanbul ignore next */
-          log.highlight = true;
-        }
-
-        if (levels.indexOf(currentlevel) >= levels.indexOf(log.level)) {
-          if (log.highlight === true) {
-            console.log(stringDate + ' [' + currentlevel + '] '
-                                   + '\u001b[1;' + colors[levels.indexOf(currentlevel)]
-                                   + 'm' + log.name + ':\u001b[0m ' + msg);
-          } else {
-            /* istanbul ignore next */
-            console.log(stringDate + ' [' + currentlevel + '] ' + log.name + ': ' + msg);
-          }
-          if (typeof msg === 'object') {
-            // to visualize content of the object instead of [object Object] only.
-            /* istanbul ignore next */
-            console.log(msg);
-          }
-        }
-      }
-    };
-    /* eslint-enable no-param-reassign */
-  }());
-  /* eslint-enable one-var, semi-style, no-underscore-dangle */
-
 
   /** **************************************************************************
    *
@@ -188,8 +55,16 @@
    * returns an object by calling its constructor. It doesn't use the new
    * keyword.
    *
+   * Private Functions:
+   *  . none,
+   *
+   *
+   * Constructor:
+   *  . KZlog                       creates and returns the KZlog object,
+   *
+   *
    * Public Static Methods:
-   *  . noConflict                  returns a reference to the constructor,
+   *  . noConflict                  returns a reference to this KZlog object,
    *
    *
    * Public Methods:
@@ -206,6 +81,7 @@
    *  . fatal                       dumps a fatal message,
    *
    *
+   *
    * @namespace    KZlog
    * @dependencies none
    * @exports      -
@@ -213,6 +89,7 @@
    * @since        0.0.0
    * @version      -
    * ************************************************************************ */
+  /* global */
   /* eslint-disable one-var, semi-style */
 
   (function() {
@@ -222,25 +99,27 @@
 
 
     // -- Local modules
-    var L = LG.Public
-      ;
 
 
     // -- Local constants
-    var previousKZlog
-      , methods
-      ;
+    // Saves the previous value of the library variable, so that it can be
+    // restored later on, if noConflict is used.
+    const previousKZlog = root.KZlog
+        ;
 
 
     // -- Local variables
+    let methods
+      ;
 
 
     // -- Public ---------------------------------------------------------------
 
     /**
-     * Creates and returns the object KZlog.
+     * Returns the KZlog object.
      * (Prototypal Instantiation Pattern)
      *
+     * @constructor (arg1)
      * @constructor (arg1, arg2, arg3)
      * @public
      * @param {String}        the name of the module/library to be printed,
@@ -250,36 +129,33 @@
      * @since 0.0.0
      */
     KZlog = function(name, level, highlight) {
-      var obj = Object.create(methods);
+      const obj = Object.create(methods);
       obj.name = name || 'unknown!';
       obj.level = level || 'trace';
       obj.highlight = highlight !== false;
       return obj;
     };
 
-    // Saves the previous value of the library variable, so that it can be
-    // restored later on, if noConflict is used.
-    previousKZlog = root.KZlog;
-
-    // Current version of the library:
-    KZlog.VERSION = '0.0.4';
+    // Attaches a constant to KZlog that provides the version of the lib.
+    KZlog.VERSION = '0.0.5';
 
 
-    // -- Public Static Methods ----------------------------------------------
+    // -- Public Static Methods ------------------------------------------------
 
     /**
      * Returns a reference to this KZlog object.
      *
      * Nota:
-     * Runs KZlog in noConflict mode by returning the KZlog variable
-     * to its previous owner and returning a reference to this KZlog object.
+     * Running KZlog in noConflict mode, returns the KZlog variable to its
+     * _ previous owner.
      *
      * @method ()
      * @public
-     * @param {}            -,
-     * @returns {Object}    returns a reference to this object,
+     * @param {}              -,
+     * @returns {String}      returns the KZlog object,
      * @since 0.0.0
      */
+    /* istanbul ignore next */
     KZlog.noConflict = function() {
       /* eslint-disable-next-line no-param-reassign */
       root.KZlog = previousKZlog;
@@ -300,8 +176,8 @@
        * @returns {}          -,
        * @since 0.0.0
        */
-      help: function() {
-        var help = ['',
+      help() {
+        const help = ['',
           'Prints a log message formatted as: [year-month-day] [level] name message,',
           'Methods:',
           '  help(): print this message,',
@@ -315,7 +191,7 @@
           '  warn(msg): print the warn message,',
           '  error(msg): print the error message,',
           '  fatal(msg): print the fatal message,',
-          ''
+          '',
         ].join('\n');
 
         console.log(help);
@@ -330,8 +206,8 @@
        * @returns {String}    returns the version of the library,
        * @since 0.0.0
        */
-      version: function() {
-        return '0.0.4';
+      version() {
+        return '0.0.5';
       },
 
       /**
@@ -344,7 +220,7 @@
        * @returns {Object}    returns this,
        * @since 0.0.0
        */
-      setName: function(name) {
+      setName(name) {
         this.name = name || 'unknown!';
         return this;
       },
@@ -359,7 +235,7 @@
        * @returns {Object}    returns this,
        * @since 0.0.0
        */
-      setLevel: function(level) {
+      setLevel(level) {
         this.level = level || 'trace';
         return this;
       },
@@ -374,7 +250,7 @@
        * @returns {Object}    returns this,
        * @since 0.0.0
        */
-      setHighlight: function(highlight) {
+      setHighlight(highlight) {
         this.highlight = highlight !== false;
         return this;
       },
@@ -388,8 +264,8 @@
        * @returns {Object}    returns this,
        * @since 0.0.0
        */
-      trace: function(msg) {
-        L.print(this, msg, 'trace');
+      trace(msg) {
+        LG.print(this, msg, 'trace');
         return this;
       },
 
@@ -402,8 +278,8 @@
        * @returns {Object}    returns this,
        * @since 0.0.0
        */
-      debug: function(msg) {
-        L.print(this, msg, 'debug');
+      debug(msg) {
+        LG.print(this, msg, 'debug');
         return this;
       },
 
@@ -416,8 +292,8 @@
        * @returns {Object}    returns this,
        * @since 0.0.0
        */
-      info: function(msg) {
-        L.print(this, msg, 'info');
+      info(msg) {
+        LG.print(this, msg, 'info');
         return this;
       },
 
@@ -430,8 +306,8 @@
        * @returns {Object}    returns this,
        * @since 0.0.0
        */
-      warn: function(msg) {
-        L.print(this, msg, 'warn');
+      warn(msg) {
+        LG.print(this, msg, 'warn');
         return this;
       },
 
@@ -444,8 +320,8 @@
        * @returns {Object}    returns this,
        * @since 0.0.0
        */
-      error: function(msg) {
-        L.print(this, msg, 'error');
+      error(msg) {
+        LG.print(this, msg, 'error');
         return this;
       },
 
@@ -458,16 +334,146 @@
        * @returns {Object}    returns this,
        * @since 0.0.0
        */
-      fatal: function(msg) {
-        L.print(this, msg, 'fatal');
+      fatal(msg) {
+        LG.print(this, msg, 'fatal');
         return this;
-      }
+      },
     };
   }());
   /* eslint-enable one-var, semi-style */
 
+  /** **************************************************************************
+   *
+   * Implements the functions used by KZlog.
+   *
+   * log.js is just a literal object that contains a set of functions. It
+   * can't be intantiated.
+   *
+   * Private Functions:
+   *  . _default                    returns the default level,
+   *  . _levels                     returns the defined levels,
+   *
+   *
+   * Public Static Methods:
+   *  . print                       dumps, to the console, the logging message,
+   *
+   *
+   *
+   * @namespace LG
+   * @exports   -
+   * @author    -
+   * @since     0.0.0
+   * @version   -
+   * ************************************************************************ */
+  /* eslint-disable one-var, semi-style, no-underscore-dangle */
+
+  (function() {
+    // IIFE
+
+
+    // -- Local modules
+
+
+    // -- Local constants
+    const DEFAULT_LEVEL = 'trace'
+        , LEVELS = ['trace', 'debug', 'info', 'warn', 'error', 'fatal', 'off']
+        ;
+
+
+    // -- Local variables
+
+
+    // -- Private Functions ----------------------------------------------------
+
+    /**
+     * Returns the default level.
+     *
+     * @function ()
+     * @private
+     * @param {}              -,
+     * @returns {Array}       returns the default level,
+     * @since 0.0.0
+     */
+    /* istanbul ignore next */
+    function _default() {
+      return DEFAULT_LEVEL;
+    }
+
+    /**
+     * Returns the defined levels.
+     *
+     * @function ()
+     * @private
+     * @param {}              -,
+     * @returns {Array}       returns the defined levels,
+     * @since 0.0.0
+     */
+    function _levels() {
+      return LEVELS;
+    }
+
+
+    // -- Public Static Methods ------------------------------------------------
+
+    LG = {
+
+      /**
+       * Dumps, to the console, the logging message.
+       *
+       * @method (arg1, arg2)
+       * @public
+       * @param {Object}    the log object,
+       * @param {String}    the message to print,
+       * @param {String}    the level of the message,
+       * @returns {}        -,
+       * @since 0.0.0
+       */
+      /* eslint-disable no-param-reassign */
+      print(log, msg, currentlevel) {
+        const levels = _levels()
+            , colors = [32, 36, 34, 33, 35, 31, 0]
+            , date   = new Date()
+            ;
+
+        let stringDate = `[${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}  `;
+        stringDate += `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()}`;
+        stringDate += ']';
+
+        if (!log.level) {
+          /* istanbul ignore next */
+          log.level = _default();
+        }
+
+        if (log.highlight === undefined) {
+          /* istanbul ignore next */
+          log.highlight = true;
+        }
+
+        let message;
+        if (levels.indexOf(currentlevel) >= levels.indexOf(log.level)) {
+          if (log.highlight === true) {
+            const ctags = `\u001b[1;${colors[levels.indexOf(currentlevel)]}m`;
+            const ctage = '\u001b[0m';
+
+            message = `${stringDate} [${ctags}${currentlevel}${ctage}] `;
+            message += `${log.name}: ${msg}`;
+          } else {
+            /* istanbul ignore next */
+            message = `${stringDate} [${currentlevel}] ${log.name}: ${msg}`;
+          }
+          console.log(message);
+          if (typeof msg === 'object') {
+            // to visualize content of the object instead of [object Object] only.
+            /* istanbul ignore next */
+            console.log(msg);
+          }
+        }
+      },
+    };
+    /* eslint-enable no-param-reassign */
+  }());
+  /* eslint-enable one-var, semi-style, no-underscore-dangle */
 
   // Returns the library name:
   return KZlog;
 }));
-/* eslint-enable one-var, semi-style */

@@ -1,4 +1,3 @@
-// Based on UMD Lib template v0.8.4
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"] */
@@ -13,6 +12,7 @@
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
+    /* eslint-disable-next-line no-param-reassign */
     module.exports = factory(root);
     // This is a hack to attach the lib to the browser root when this lib is
     // included inside another lib and the whole is browserifyied:
@@ -23,7 +23,7 @@
     /* eslint-disable-next-line no-param-reassign */
     root.KZlog = factory(root);
   }
-}({{lib:parent}}, function(root) {
+}({{lib:parent}}, (root) => {
   'use strict';
 
   // These are the global variables accessible everywhere inside this module.
@@ -32,8 +32,7 @@
   // 'LG' is an object that exports public methods from the IIFE module
   // in which they are defined.
   /* eslint-disable one-var, semi-style */
-  var KZlog
+  let KZlog
     , LG = {}
     ;
-
   /* eslint-enable one-var, semi-style */
