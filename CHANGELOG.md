@@ -3,7 +3,7 @@
 ### 0.0.6 (March 20, 2020)
 
   * Made some cosmetics changes.
-  * ...,
+  * Release.
 
 
 ### 0.0.5 (March 17, 2020)
