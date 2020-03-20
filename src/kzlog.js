@@ -40,28 +40,28 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
-/* global */
+/* global LG, root */
 /* eslint-disable one-var, semi-style */
 
 'use strict';
 
 (function() {
-  // IIFE
-
-  // -- Module path
+  // START OF IIFE
 
 
-  // -- Local modules
+  // -- Module Path
 
 
-  // -- Local constants
+  // -- Local Modules
+
+
+  // -- Local Constants
   // Saves the previous value of the library variable, so that it can be
   // restored later on, if noConflict is used.
-  const previousKZlog = root.KZlog
-      ;
+  const previousKZlog = root.KZlog;
 
 
-  // -- Local variables
+  // -- Local Variables
   let methods
     ;
 
@@ -292,5 +292,7 @@
       return this;
     },
   };
+
+  // END OF IIFE
 }());
 /* eslint-enable one-var, semi-style */

@@ -4,19 +4,19 @@
 
 'use strict';
 
-// -- Node modules
+// -- Vendor Modules
 const { expect } = require('chai')
     , sinon      = require('sinon')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 
 
-// -- Local constants
+// -- Local Constants
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Main

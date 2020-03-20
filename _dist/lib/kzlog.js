@@ -1,12 +1,12 @@
 /*! ****************************************************************************
- * KZlog v0.0.5
+ * KZlog v0.0.6
  *
  * A minimal lightweight logging library for JavaScript.
  * (you can download it from npm or github repositories)
  * Copyright (c) 2020 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
- * Built from ES6lib v0.0.10.
+ * Built from ES6lib v0.0.12.
  * ************************************************************************** */
 // ESLint declarations
 /* global define */
@@ -89,26 +89,26 @@
    * @since        0.0.0
    * @version      -
    * ************************************************************************ */
-  /* global */
+  /* - */
   /* eslint-disable one-var, semi-style */
 
   (function() {
-    // IIFE
-
-    // -- Module path
+    // START OF IIFE
 
 
-    // -- Local modules
+    // -- Module Path
 
 
-    // -- Local constants
+    // -- Local Modules
+
+
+    // -- Local Constants
     // Saves the previous value of the library variable, so that it can be
     // restored later on, if noConflict is used.
-    const previousKZlog = root.KZlog
-        ;
+    const previousKZlog = root.KZlog;
 
 
-    // -- Local variables
+    // -- Local Variables
     let methods
       ;
 
@@ -137,7 +137,7 @@
     };
 
     // Attaches a constant to KZlog that provides the version of the lib.
-    KZlog.VERSION = '0.0.5';
+    KZlog.VERSION = '0.0.6';
 
 
     // -- Public Static Methods ------------------------------------------------
@@ -207,7 +207,7 @@
        * @since 0.0.0
        */
       version() {
-        return '0.0.5';
+        return '0.0.6';
       },
 
       /**
@@ -339,6 +339,8 @@
         return this;
       },
     };
+
+    // END OF IIFE
   }());
   /* eslint-enable one-var, semi-style */
 
@@ -365,22 +367,26 @@
    * @since     0.0.0
    * @version   -
    * ************************************************************************ */
+  /* - */
   /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
   (function() {
-    // IIFE
+    // START OF IIFE
 
 
-    // -- Local modules
+    // -- Module Path
 
 
-    // -- Local constants
+    // -- Local Modules
+
+
+    // -- Local Constants
     const DEFAULT_LEVEL = 'trace'
         , LEVELS = ['trace', 'debug', 'info', 'warn', 'error', 'fatal', 'off']
         ;
 
 
-    // -- Local variables
+    // -- Local Variables
 
 
     // -- Private Functions ----------------------------------------------------
@@ -471,6 +477,8 @@
       },
     };
     /* eslint-enable no-param-reassign */
+
+    // END OF IIFE
   }());
   /* eslint-enable one-var, semi-style, no-underscore-dangle */
 

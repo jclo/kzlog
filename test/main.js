@@ -4,10 +4,10 @@
 
 'use strict';
 
-// -- Node modules
+// -- Vendor Modules
 
 
-// -- Local modules
+// -- Local Modules
 const KZlog = require('../index.js')
     , constructor = require('./int/constructor.js')
     , helpversion = require('./int/helpversion.js')
@@ -16,10 +16,10 @@ const KZlog = require('../index.js')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Main

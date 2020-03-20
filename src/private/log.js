@@ -21,24 +21,28 @@
  * @since     0.0.0
  * @version   -
  * ************************************************************************ */
+/* - */
 /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
 'use strict';
 
 (function() {
-  // IIFE
+  // START OF IIFE
 
 
-  // -- Local modules
+  // -- Module Path
 
 
-  // -- Local constants
+  // -- Local Modules
+
+
+  // -- Local Constants
   const DEFAULT_LEVEL = 'trace'
       , LEVELS = ['trace', 'debug', 'info', 'warn', 'error', 'fatal', 'off']
       ;
 
 
-  // -- Local variables
+  // -- Local Variables
 
 
   // -- Private Functions ----------------------------------------------------
@@ -129,5 +133,7 @@
     },
   };
   /* eslint-enable no-param-reassign */
+
+  // END OF IIFE
 }());
 /* eslint-enable one-var, semi-style, no-underscore-dangle */

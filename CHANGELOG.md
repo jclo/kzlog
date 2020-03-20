@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.0.6 (March 20, 2020)
+
+  * Made some cosmetics changes.
+  * ...,
+
+
 ### 0.0.5 (March 17, 2020)
 
   * Updated the project with the latest ES6lib boilerplate,
