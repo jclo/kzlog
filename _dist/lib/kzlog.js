@@ -1,12 +1,12 @@
 /*! ****************************************************************************
- * KZlog v0.0.6
+ * KZlog v0.0.7
  *
  * A minimal lightweight logging library for JavaScript.
  * (you can download it from npm or github repositories)
  * Copyright (c) 2020 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
- * Built from ES6lib v0.0.12.
+ * Built from ES6lib v1.0.0-beta.7.
  * ************************************************************************** */
 // ESLint declarations
 /* global define */
@@ -24,10 +24,6 @@
     // like Node.
     /* eslint-disable-next-line no-param-reassign */
     module.exports = factory(root);
-    // This is a hack to attach the lib to the browser root when this lib is
-    // included inside another lib and the whole is browserifyied:
-    /* eslint-disable-next-line no-param-reassign */
-    if (root.KZlog === null) root.KZlog = factory(root);
   } else {
     // Browser globals.
     /* eslint-disable-next-line no-param-reassign */
@@ -36,20 +32,24 @@
 }(this, (root) => {
   'use strict';
 
-  // These are the global variables accessible everywhere inside this module.
-  // 'KZlog' is the variable that defines this library and it is the only
-  // variable accessible outside this module.
-  // 'LG' is an object that exports public methods from the IIFE module
-  // in which they are defined.
-  /* eslint-disable one-var, semi-style */
+  /** **************************************************************************
+   * _head provides the list of the constants that are defined at the global
+   * level of this module and are accessible to all. So, they are considered
+   * as reserved words for this library.
+   * ************************************************************************ */
+  /* eslint-disable one-var, no-unused-vars, semi-style */
+
   let KZlog
-    , LG = {}
     ;
-  /* eslint-enable one-var, semi-style */
+
+  // Tree is an internal object that links all the internal modules.
+  let LG = {};
+
+  /* eslint-enable one-var, no-unused-vars, semi-style */
 
   /** **************************************************************************
    *
-   * A minimal lightweight logging library for JavaScript.
+   * A lightweight logging library for JavaScript.
    *
    * kzlog.js is built upon the Prototypal Instantiation pattern. It
    * returns an object by calling its constructor. It doesn't use the new
@@ -61,6 +61,10 @@
    *
    * Constructor:
    *  . KZlog                       creates and returns the KZlog object,
+   *
+   *
+   * Private Static Methods:
+   *  . _setTestMode                returns internal objects for testing purpose,
    *
    *
    * Public Static Methods:
@@ -82,7 +86,7 @@
    *
    *
    *
-   * @namespace    KZlog
+   * @namespace    -
    * @dependencies none
    * @exports      -
    * @author       -
@@ -90,7 +94,7 @@
    * @version      -
    * ************************************************************************ */
   /* - */
-  /* eslint-disable one-var, semi-style */
+  /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
   (function() {
     // START OF IIFE
@@ -105,7 +109,8 @@
     // -- Local Constants
     // Saves the previous value of the library variable, so that it can be
     // restored later on, if noConflict is used.
-    const previousKZlog = root.KZlog;
+    const previousKZlog = root.KZlog
+        ;
 
 
     // -- Local Variables
@@ -119,7 +124,6 @@
      * Returns the KZlog object.
      * (Prototypal Instantiation Pattern)
      *
-     * @constructor (arg1)
      * @constructor (arg1, arg2, arg3)
      * @public
      * @param {String}        the name of the module/library to be printed,
@@ -130,6 +134,10 @@
      */
     KZlog = function(name, level, highlight) {
       const obj = Object.create(methods);
+      obj.library = {
+        name: 'KZlog',
+        version: '0.0.7',
+      };
       obj.name = name || 'unknown!';
       obj.level = level || 'trace';
       obj.highlight = highlight !== false;
@@ -137,7 +145,23 @@
     };
 
     // Attaches a constant to KZlog that provides the version of the lib.
-    KZlog.VERSION = '0.0.6';
+    KZlog.VERSION = '0.0.7';
+
+
+    // -- Private Static Methods -----------------------------------------------
+
+    /**
+     * Returns the internal objects for testing purpose.
+     *
+     * @method ()
+     * @private
+     * @param {}              -,
+     * @returns {Object}      returns a list of internal objects,
+     * @since 0.0.0
+     */
+    KZlog._setTestMode = function() {
+      return [];
+    };
 
 
     // -- Public Static Methods ------------------------------------------------
@@ -152,7 +176,7 @@
      * @method ()
      * @public
      * @param {}              -,
-     * @returns {String}      returns the KZlog object,
+     * @returns {Object}      returns the KZlog object,
      * @since 0.0.0
      */
     /* istanbul ignore next */
@@ -194,6 +218,7 @@
           '',
         ].join('\n');
 
+        /* eslint-disable-next-line no-console */
         console.log(help);
       },
 
@@ -207,7 +232,7 @@
        * @since 0.0.0
        */
       version() {
-        return '0.0.6';
+        return this.library.version;
       },
 
       /**
@@ -342,7 +367,7 @@
 
     // END OF IIFE
   }());
-  /* eslint-enable one-var, semi-style */
+  /* eslint-enable one-var, semi-style, no-underscore-dangle */
 
   /** **************************************************************************
    *
@@ -361,11 +386,12 @@
    *
    *
    *
-   * @namespace LG
-   * @exports   -
-   * @author    -
-   * @since     0.0.0
-   * @version   -
+   * @namespace    -
+   * @dependencies none
+   * @exports      -
+   * @author       -
+   * @since        0.0.0
+   * @version      -
    * ************************************************************************ */
   /* - */
   /* eslint-disable one-var, semi-style, no-underscore-dangle */
@@ -434,7 +460,7 @@
        * @returns {}        -,
        * @since 0.0.0
        */
-      /* eslint-disable no-param-reassign */
+      /* eslint-disable no-param-reassign, no-console */
       print(log, msg, currentlevel) {
         const levels = _levels()
             , colors = [32, 36, 34, 33, 35, 31, 0]
@@ -475,8 +501,9 @@
           }
         }
       },
+      /* eslint-enable no-param-reassign, no-console */
     };
-    /* eslint-enable no-param-reassign */
+
 
     // END OF IIFE
   }());

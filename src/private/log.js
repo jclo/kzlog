@@ -15,13 +15,14 @@
  *
  *
  *
- * @namespace LG
- * @exports   -
- * @author    -
- * @since     0.0.0
- * @version   -
+ * @namespace    -
+ * @dependencies none
+ * @exports      -
+ * @author       -
+ * @since        0.0.0
+ * @version      -
  * ************************************************************************ */
-/* - */
+/* global */
 /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
 'use strict';
@@ -90,7 +91,7 @@
      * @returns {}        -,
      * @since 0.0.0
      */
-    /* eslint-disable no-param-reassign */
+    /* eslint-disable no-param-reassign, no-console */
     print(log, msg, currentlevel) {
       const levels = _levels()
           , colors = [32, 36, 34, 33, 35, 31, 0]
@@ -131,8 +132,9 @@
         }
       }
     },
+    /* eslint-enable no-param-reassign, no-console */
   };
-  /* eslint-enable no-param-reassign */
+
 
   // END OF IIFE
 }());

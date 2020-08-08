@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.0.7 (August 8, 2020)
+
+  * Updated the project to comply with ES6lib 1.0,
+  * ...,
+
+
 ### 0.0.6 (March 20, 2020)
 
   * Made some cosmetics changes.

@@ -1,6 +1,7 @@
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"] */
+{{lib:es6:define}}
 (function(root, factory) {
   'use strict';
 
@@ -14,25 +15,10 @@
     // like Node.
     /* eslint-disable-next-line no-param-reassign */
     module.exports = factory(root);
-    // This is a hack to attach the lib to the browser root when this lib is
-    // included inside another lib and the whole is browserifyied:
-    /* eslint-disable-next-line no-param-reassign */
-    if (root.KZlog === null) root.KZlog = factory(root);
   } else {
     // Browser globals.
     /* eslint-disable-next-line no-param-reassign */
     root.KZlog = factory(root);
   }
-}({{lib:parent}}, (root) => {
+}({{lib:es6:link}}, (root) => {
   'use strict';
-
-  // These are the global variables accessible everywhere inside this module.
-  // 'KZlog' is the variable that defines this library and it is the only
-  // variable accessible outside this module.
-  // 'LG' is an object that exports public methods from the IIFE module
-  // in which they are defined.
-  /* eslint-disable one-var, semi-style */
-  let KZlog
-    , LG = {}
-    ;
-  /* eslint-enable one-var, semi-style */
