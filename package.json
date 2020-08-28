@@ -40,6 +40,7 @@
   "homepage": "https://github.com/jclo/kzlog",
   "dependencies": {},
   "devDependencies": {
+    "@mobilabs/es6lib": "1.0.1",
     "chai": "^4.2.0",
     "coveralls": "^3.1.0",
     "cross-env": "^7.0.2",
