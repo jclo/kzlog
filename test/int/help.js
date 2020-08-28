@@ -1,6 +1,6 @@
 // ESLint declarations:
 /* global describe, it */
-/* eslint one-var: 0, no-unused-expressions: 0, semi-style: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
 'use strict';
 
@@ -21,20 +21,16 @@ const { expect } = require('chai')
 
 // -- Main
 module.exports = function(KZlog) {
-  describe('Test KZlog methods help and version:', () => {
+  describe('Test KZlog help method:', () => {
     const log = KZlog();
 
     it('Expects Logger.help() to return a string.', () => {
       const sandbox = sinon.createSandbox();
       sandbox.stub(console, 'log');
       log.help();
-      expect(console.log.calledOnce).to.be.true;
-      expect(console.log.calledWith(sinon.match(/Prints a log message formatted as/))).to.be.true;
+      expect(console.log.calledOnce).to.be.equal(true);
+      expect(console.log.calledWith(sinon.match(/Prints a log message formatted as/))).to.be.equal(true);
       sandbox.restore();
-    });
-
-    it('Expects Logger.version() to return a string.', () => {
-      expect(log.version()).to.be.a('string');
     });
   });
 };

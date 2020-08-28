@@ -1,5 +1,11 @@
 ### HEAD
 
+### 1.0.0 (August 28, 2020)
+
+  * Updated the project dependencies,
+  * ...,
+
+
 ### 0.0.7 (August 8, 2020)
 
   * Updated the project to comply with ES6lib 1.0,

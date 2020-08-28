@@ -1,6 +1,6 @@
 // ESLint declarations:
 /* global describe, it */
-/* eslint one-var: 0, no-unused-expressions: 0, semi-style: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
 'use strict';
 
@@ -33,8 +33,8 @@ module.exports = function(KZlog) {
         const sandbox = sinon.createSandbox();
         sandbox.stub(console, 'log');
         log.trace('message');
-        expect(console.log.calledWith(sinon.match(/aaa/))).to.be.true;
-        expect(console.log.calledWith(sinon.match(/message/))).to.be.true;
+        expect(console.log.calledWith(sinon.match(/aaa/))).to.be.equal(true);
+        expect(console.log.calledWith(sinon.match(/message/))).to.be.equal(true);
         sandbox.restore();
       });
     });

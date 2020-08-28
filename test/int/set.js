@@ -1,6 +1,6 @@
 // ESLint declarations:
 /* global describe, it */
-/* eslint one-var: 0, no-unused-expressions: 0, semi-style: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
 'use strict';
 
@@ -49,7 +49,7 @@ module.exports = function(KZlog) {
       });
 
       it('Expects the property highlight to be equal to true.', () => {
-        expect(log.highlight).to.be.true;
+        expect(log.highlight).to.be.equal(true);
       });
 
 
@@ -80,7 +80,7 @@ module.exports = function(KZlog) {
       describe('Test the method setHighlight:', () => {
         it('Expects Logger.setHighlight(false) to set highlight to false.', () => {
           log.setHighlight(false);
-          expect(log.highlight).to.be.false;
+          expect(log.highlight).to.be.equal(false);
         });
       });
     });

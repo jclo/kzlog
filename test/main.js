@@ -8,15 +8,17 @@
 
 
 // -- Local Modules
-const KZlog = require('../index.js')
-    , constructor = require('./int/constructor.js')
-    , helpversion = require('./int/helpversion.js')
-    , set = require('./int/set.js')
-    , methods = require('./int/methods.js')
+const KZlog       = require('../index.js')
+    , pack        = require('../package.json')
+    , testlib     = require('./int/lib')
+    , testhelp    = require('./int/help')
+    , testsetm    = require('./int/set')
+    , testmethods = require('./int/methods')
     ;
 
 
 // -- Local Constants
+const libname = 'KZlog';
 
 
 // -- Local Variables
@@ -24,8 +26,8 @@ const KZlog = require('../index.js')
 
 // -- Main
 describe('Test KZlog:', () => {
-  constructor(KZlog);
-  helpversion(KZlog);
-  set(KZlog);
-  methods(KZlog);
+  testlib(KZlog, libname, pack.version);
+  testhelp(KZlog);
+  testsetm(KZlog);
+  testmethods(KZlog);
 });

@@ -1,12 +1,12 @@
 /*! ****************************************************************************
- * KZlog v0.0.7
+ * KZlog v1.0.0
  *
  * A minimal lightweight logging library for JavaScript.
  * (you can download it from npm or github repositories)
  * Copyright (c) 2020 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
- * Built from ES6lib v1.0.0-beta.7.
+ * Built from ES6lib v1.0.0.
  * ************************************************************************** */
 // ESLint declarations
 /* global define */
@@ -72,8 +72,8 @@
    *
    *
    * Public Methods:
+   *  . whoami                      returns the library name and version,
    *  . help                        dumps, to the console, the on-line help,
-   *  . version                     returns the version of the library,
    *  . setName                     updates the name of the module/library,
    *  . setLevel                    updates the threshold level,
    *  . setHighlight                updates the highlight mode,
@@ -134,9 +134,9 @@
      */
     KZlog = function(name, level, highlight) {
       const obj = Object.create(methods);
-      obj.library = {
+      obj._library = {
         name: 'KZlog',
-        version: '0.0.7',
+        version: '1.0.0',
       };
       obj.name = name || 'unknown!';
       obj.level = level || 'trace';
@@ -144,14 +144,16 @@
       return obj;
     };
 
-    // Attaches a constant to KZlog that provides the version of the lib.
-    KZlog.VERSION = '0.0.7';
+    // Attaches constants to KZlog that provide name and version of the lib.
+    KZlog.NAME = 'KZlog';
+    KZlog.VERSION = '1.0.0';
 
 
     // -- Private Static Methods -----------------------------------------------
 
     /**
      * Returns the internal objects for testing purpose.
+     * (must not be deleted)
      *
      * @method ()
      * @private
@@ -168,6 +170,7 @@
 
     /**
      * Returns a reference to this KZlog object.
+     * (must not be deleted)
      *
      * Nota:
      * Running KZlog in noConflict mode, returns the KZlog variable to its
@@ -179,7 +182,6 @@
      * @returns {Object}      returns the KZlog object,
      * @since 0.0.0
      */
-    /* istanbul ignore next */
     KZlog.noConflict = function() {
       /* eslint-disable-next-line no-param-reassign */
       root.KZlog = previousKZlog;
@@ -190,6 +192,20 @@
     // -- Public Methods -------------------------------------------------------
 
     methods = {
+
+      /**
+       * Returns the library name and version.
+       * (must not be deleted)
+       *
+       * @method ()
+       * @public
+       * @param {}            -,
+       * @returns {Object}    returns the library name and version,
+       * @since 0.0.0
+       */
+      whoami() {
+        return this._library;
+      },
 
       /**
        * Dumps, to the console, the on-line help.
@@ -220,19 +236,6 @@
 
         /* eslint-disable-next-line no-console */
         console.log(help);
-      },
-
-      /**
-       * Returns the version of the library.
-       *
-       * @function ()
-       * @public
-       * @param {}            -,
-       * @returns {String}    returns the version of the library,
-       * @since 0.0.0
-       */
-      version() {
-        return this.library.version;
       },
 
       /**
