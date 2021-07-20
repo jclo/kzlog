@@ -1,12 +1,12 @@
 /*! ****************************************************************************
- * KZlog v1.0.0
+ * KZlog v1.0.1
  *
  * A minimal lightweight logging library for JavaScript.
  * (you can download it from npm or github repositories)
- * Copyright (c) 2020 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
+ * Copyright (c) 2021 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
- * Built from ES6lib v1.0.1.
+ * Built from ES6lib v1.0.11.
  * ************************************************************************** */
 // ESLint declarations
 /* global define */
@@ -137,7 +137,7 @@ const $__ES6GLOB = {};
       const obj = Object.create(methods);
       obj._library = {
         name: 'KZlog',
-        version: '1.0.0',
+        version: '1.0.1',
       };
       obj.name = name || 'unknown!';
       obj.level = level || 'trace';
@@ -147,7 +147,7 @@ const $__ES6GLOB = {};
 
     // Attaches constants to KZlog that provide name and version of the lib.
     KZlog.NAME = 'KZlog';
-    KZlog.VERSION = '1.0.0';
+    KZlog.VERSION = '1.0.1';
 
 
     // -- Private Static Methods -----------------------------------------------

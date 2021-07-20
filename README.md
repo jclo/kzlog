@@ -73,6 +73,6 @@ The default threshold level is `trace`. It can be set to `trace`, `debug`, `info
 [travis-url]: https://travis-ci.org/jclo/kzlog
 [coveralls-url]: https://coveralls.io/github/jclo/kzlog?branch=master
 [dependencies-url]: https://david-dm.org/jclo/kzlog
-[devdependencies-url]: https://david-dm.org/jclo/kzlog?type=dev
+[devdependencies-url]: https://david-dm.com/jclo/kzlog?type=dev
 [license-url]: http://opensource.org/licenses/MIT
 [npm-bundle-size-url]: https://img.shields.io/bundlephobia/minzip/@mobilabs/kzlog

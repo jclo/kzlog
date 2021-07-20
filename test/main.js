@@ -8,7 +8,7 @@
 
 
 // -- Local Modules
-const KZlog       = require('../index.js')
+const KZlog       = require('../index')
     , pack        = require('../package.json')
     , testlib     = require('./int/lib')
     , testhelp    = require('./int/help')
@@ -26,7 +26,7 @@ const libname = 'KZlog';
 
 // -- Main
 describe('Test KZlog:', () => {
-  testlib(KZlog, libname, pack.version);
+  testlib(KZlog, libname, pack.version, 'without new');
   testhelp(KZlog);
   testsetm(KZlog);
   testmethods(KZlog);
