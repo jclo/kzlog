@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/kzlog",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A minimal lightweight logging library for JavaScript",
   "main": "_dist/lib/kzlog.js",
   "minified": "_dist/lib/kzlog.min.js",
@@ -41,13 +41,13 @@
   "homepage": "https://github.com/jclo/kzlog",
   "dependencies": {},
   "devDependencies": {
-    "chai": "^4.3.4",
+    "chai": "^4.3.5",
     "coveralls": "^3.1.1",
     "cross-env": "^7.0.3",
     "del": "^6.0.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-import": "^2.25.4",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.7.0",
@@ -55,12 +55,12 @@
     "gulp-replace": "^1.1.3",
     "gulp-uglify-es": "^3.0.0",
     "husky": "^7.0.4",
-    "mocha": "^9.1.3",
+    "mocha": "^9.2.0",
     "nyc": "^15.1.0",
     "open": "^8.4.0",
     "opener": "^1.5.2",
     "sinon": "^12.0.1",
-    "@mobilabs/es6lib": "1.0.12"
+    "@mobilabs/es6lib": "1.0.13"
   },
   "publishConfig": {
     "access": "public"
