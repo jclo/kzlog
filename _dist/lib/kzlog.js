@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * KZlog v1.0.3
+ * KZlog v1.0.4
  *
  * A minimal lightweight logging library for JavaScript.
  * (you can download it from npm or github repositories)
@@ -137,7 +137,7 @@
       const obj = Object.create(methods);
       obj._library = {
         name: 'KZlog',
-        version: '1.0.3',
+        version: '1.0.4',
       };
       obj.name = name || 'unknown!';
       obj.level = level || 'trace';
@@ -147,7 +147,7 @@
 
     // Attaches constants to KZlog that provide name and version of the lib.
     KZlog.NAME = 'KZlog';
-    KZlog.VERSION = '1.0.3';
+    KZlog.VERSION = '1.0.4';
 
 
     // -- Private Static Methods -----------------------------------------------
