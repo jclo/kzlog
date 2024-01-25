@@ -8,8 +8,8 @@
 
 
 // -- Local Modules
-const KZlog       = require('../index')
-    , pack        = require('../package.json')
+const KZlog  = require('../index')
+    , pack    = require('../package.json')
     , testlib     = require('./int/lib')
     , testhelp    = require('./int/help')
     , testsetm    = require('./int/set')
