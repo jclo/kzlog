@@ -5,12 +5,16 @@
  * ************************************************************************ */
 /* eslint-disable one-var, no-unused-vars, semi-style */
 
-'use strict';
 
 let KZlog
+  , extend
   ;
 
 // Tree is an internal object that links all the internal modules.
-let LG = {};
+const Tree = {
+  Log: {
+    Public: {},
+  },
+};
 
 /* eslint-enable one-var, no-unused-vars, semi-style */

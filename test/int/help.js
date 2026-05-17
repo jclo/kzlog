@@ -1,13 +1,11 @@
 // ESLint declarations:
 /* global describe, it */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
+/* eslint no-console: 0 */
 
-'use strict';
 
 // -- Vendor Modules
-const { expect } = require('chai')
-    , sinon      = require('sinon')
-    ;
+import { expect } from 'chai';
+import sinon from 'sinon';
 
 
 // -- Local Modules
@@ -20,7 +18,7 @@ const { expect } = require('chai')
 
 
 // -- Main
-module.exports = function(KZlog) {
+export default function(KZlog) {
   describe('Test KZlog help method:', () => {
     const log = KZlog();
 
@@ -34,3 +32,6 @@ module.exports = function(KZlog) {
     });
   });
 };
+
+
+// - oOo --

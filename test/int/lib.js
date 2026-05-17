@@ -2,11 +2,9 @@
 /* global describe, it */
 /* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
-'use strict';
 
 // -- Vendor Modules
-const { expect } = require('chai')
-    ;
+import { expect } from 'chai';
 
 
 // -- Local Modules
@@ -27,7 +25,7 @@ const LIBPROPS = 0
 
 
 // -- Main
-module.exports = function(KZlog, libname, version, type) {
+export default function(KZlog, libname, version, type) {
   describe('KZlog introspection:', () => {
     describe('Test the nature of KZlog:', () => {
       it('Expects KZlog to be a function.', () => {
@@ -75,7 +73,7 @@ module.exports = function(KZlog, libname, version, type) {
         //   it('Expects KZlog to own the property ... to be completed or ... removed!', () => {
         //     expect(true).to.be.equal(true);
         //   });
-        //
+
         //   describe('Test the owned specific custom properties:', () => {
         //     it('Expects KZlog the property ... to be completed or ... removed!', () => {
         //       expect(true).to.be.equal(true);
@@ -145,8 +143,8 @@ module.exports = function(KZlog, libname, version, type) {
             expect(o).to.own.property('highlight').that.is.a('boolean');
           });
 
-          describe('Test the owned specific properties:', () => {
-            it('Expects ...', () => {
+          describe('Test the owned specific custom properties:', () => {
+            it('Expects KZlog ...', () => {
               expect(true).to.be.equal(true);
             });
           });
@@ -233,3 +231,6 @@ module.exports = function(KZlog, libname, version, type) {
     });
   });
 };
+
+
+// - oOo --

@@ -1,12 +1,12 @@
 /*! ****************************************************************************
- * KZlog v1.0.4
+ * KZlog v2.0.0
  *
  * A minimal lightweight logging library for JavaScript.
  * (you can download it from npm or github repositories)
- * Copyright (c) 2024 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
+ * Copyright (c) 2026 Mobilabs <contact@mobilabs.fr> (https://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
- * Built from ES6lib v2.1.1.
+ * Built from ES6lib v3.0.0-beta.1.2.
  * ************************************************************************** */
 // ESLint declarations
 /* global define */
@@ -41,13 +41,90 @@ const $__ES6GLOB = {};
    * ************************************************************************ */
   /* eslint-disable one-var, no-unused-vars, semi-style */
 
+
   let KZlog
+    , extend
     ;
 
   // Tree is an internal object that links all the internal modules.
-  let LG = {};
+  const Tree = {
+    Log: {
+      Public: {},
+    },
+  };
 
   /* eslint-enable one-var, no-unused-vars, semi-style */
+
+  /** **************************************************************************
+   *
+   * Provides the function 'extend' that is used to fill the object tree with
+   * the public static or object methods when the Javascript VM browses the
+   * library from the top to the bottom.
+   *
+   * extend.js is just a literal object that contains a set of functions.
+   * It can't be instantiated.
+   *
+   * Private Functions:
+   *  . none,
+   *
+   *
+   * Public Static Methods:
+   *  . extend                      extends the passed-in object with new methods,
+   *
+   *
+   *
+   * @namespace    -
+   * @dependencies none
+   * @exports      -
+   * @author       -
+   * @since        0.0.0
+   * @version      -
+   * ************************************************************************ */
+  /* - */
+  /* - */
+
+  (function() {
+    // START OF IIFE
+
+
+    // -- Module Path
+
+
+    // -- Local Modules
+
+
+    // -- Local Constants
+
+
+    // -- Local Variables
+
+
+    // -- Public function ------------------------------------------------------
+
+    /**
+     * Extends the passed-in object with new methods.
+     *
+     * Nota: this function mutates object.
+     *
+     * @function (arg1, arg2)
+     * @private
+     * @param {Object}        the object to extend,
+     * @param {Object}        an object containing a set of methods,
+     * @returns {}            -,
+     * @since 0.0.0
+     */
+    extend = function(object, methods) {
+      const keys = Object.keys(methods);
+
+      for (let i = 0; i < keys.length; i++) {
+        /* eslint-disable-next-line no-param-reassign */
+        object[keys[i]] = methods[keys[i]];
+      }
+    };
+
+    // END OF IIFE
+  }());
+  /* - */
 
   /** **************************************************************************
    *
@@ -98,6 +175,7 @@ const $__ES6GLOB = {};
   /* - */
   /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
+
   (function() {
     // START OF IIFE
 
@@ -106,6 +184,7 @@ const $__ES6GLOB = {};
 
 
     // -- Local Modules
+    const LG = Tree.Log.Public;
 
 
     // -- Local Constants
@@ -138,7 +217,7 @@ const $__ES6GLOB = {};
       const obj = Object.create(methods);
       obj._library = {
         name: 'KZlog',
-        version: '1.0.4',
+        version: '2.0.0',
       };
       obj.name = name || 'unknown!';
       obj.level = level || 'trace';
@@ -148,7 +227,7 @@ const $__ES6GLOB = {};
 
     // Attaches constants to KZlog that provide name and version of the lib.
     KZlog.NAME = 'KZlog';
-    KZlog.VERSION = '1.0.4';
+    KZlog.VERSION = '2.0.0';
 
 
     // -- Private Static Methods -----------------------------------------------
@@ -175,8 +254,8 @@ const $__ES6GLOB = {};
      * (must not be deleted)
      *
      * Nota:
-     * Running KZlog in noConflict mode, returns the KZlog variable to its
-     * _ previous owner.
+     * Running KZlog in noConflict mode, returns the KZlog variable to
+     * its previous owner.
      *
      * @method ()
      * @public
@@ -399,13 +478,15 @@ const $__ES6GLOB = {};
    * @version      -
    * ************************************************************************ */
   /* - */
-  /* eslint-disable one-var, semi-style, no-underscore-dangle */
+  /* - */
+
 
   (function() {
     // START OF IIFE
 
 
     // -- Module Path
+    const Root = Tree.Log.Public;
 
 
     // -- Local Modules
@@ -452,7 +533,7 @@ const $__ES6GLOB = {};
 
     // -- Public Static Methods ------------------------------------------------
 
-    LG = {
+    extend(Root, {
 
       /**
        * Dumps, to the console, the logging message.
@@ -465,7 +546,7 @@ const $__ES6GLOB = {};
        * @returns {}        -,
        * @since 0.0.0
        */
-      /* eslint-disable no-param-reassign, no-console */
+      /* eslint-disable no-console */
       print(log, msg, currentlevel) {
         const levels = _levels()
             , colors = [32, 36, 34, 33, 35, 31, 0]
@@ -506,13 +587,13 @@ const $__ES6GLOB = {};
           }
         }
       },
-      /* eslint-enable no-param-reassign, no-console */
-    };
+      /* eslint-enable no-console */
+    });
 
 
     // END OF IIFE
   }());
-  /* eslint-enable one-var, semi-style, no-underscore-dangle */
+  /* - */
 
   // Returns the library name:
   return KZlog;

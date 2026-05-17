@@ -1,12 +1,24 @@
+/** ************************************************************************
+ *
+ * Configuration file.
+ *
+ *
+ *
+ * @namespace    -
+ * @dependencies none
+ * @exports      -
+ * @author       -
+ * @since        0.0.0
+ * @version      -
+ * ********************************************************************** */
 /* eslint one-var: 0, semi-style: 0 */
 
-'use strict';
 
 // -- Vendor Modules
 
 
 // -- Local Modules
-const pack = require('../package.json');
+import pack from '../package.json' with { type: 'json'};
 
 
 // -- Local Constants
@@ -20,7 +32,7 @@ const libname = 'KZlog'
 
 // -- Main
 
-module.exports = {
+export default {
   ES6GLOB: '$__ES6GLOB',
   dist: './_dist',
   libdir: './lib',
@@ -42,9 +54,17 @@ module.exports = {
     // the tree!
     './src/_header',
     './src/_head.js',
+    './src/lib/extend.js',
 
     './src/kzlog.js',
     './src/private/log.js',
+    // './src/basic.js',
+    // './src/basicplus.js',
+    // './src/functional.js',
+    // './src/functional-shared.js',
+    // './src/prototypal.js',
+    // './src/pseudoclassical.js',
+    // './src/pseudoclassical-auto.js',
 
     // This file must always be the last one as it closes the umd module.
     './src/_footer',
@@ -66,7 +86,7 @@ module.exports = {
       ` * Copyright (c) ${(new Date()).getFullYear()} ${pack.author.name} <${pack.author.email}> (${pack.author.url}).`,
       ' * Released under the MIT license. You may obtain a copy of the License',
       ' * at: http://www.opensource.org/licenses/mit-license.php).',
-      ' * Built from ES6lib v2.1.1.',
+      ' * Built from ES6lib v3.0.0-beta.1.2.',
       ' * ************************************************************************** */',
       ''].join('\n');
   },

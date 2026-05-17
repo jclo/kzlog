@@ -2,11 +2,9 @@
 /* global describe, it */
 /* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
-'use strict';
 
 // -- Vendor Modules
-const { expect } = require('chai')
-    ;
+import { expect } from 'chai';
 
 
 // -- Local Modules
@@ -19,7 +17,7 @@ const { expect } = require('chai')
 
 
 // -- Main
-module.exports = function(KZlog) {
+export default function(KZlog) {
   describe('Test KZlog methods setName, setLevel, setHighlight:', () => {
     describe('Test the properties name, level and highlight:', () => {
       const log = KZlog();
@@ -86,3 +84,6 @@ module.exports = function(KZlog) {
     });
   });
 };
+
+
+// - oOo --

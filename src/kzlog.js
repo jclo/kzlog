@@ -44,10 +44,9 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
-/* global LG, root */
+/* global Tree, root */
 /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
-'use strict';
 
 (function() {
   // START OF IIFE
@@ -57,6 +56,7 @@
 
 
   // -- Local Modules
+  const LG = Tree.Log.Public;
 
 
   // -- Local Constants
@@ -126,8 +126,8 @@
    * (must not be deleted)
    *
    * Nota:
-   * Running KZlog in noConflict mode, returns the KZlog variable to its
-   * _ previous owner.
+   * Running KZlog in noConflict mode, returns the KZlog variable to
+   * its previous owner.
    *
    * @method ()
    * @public

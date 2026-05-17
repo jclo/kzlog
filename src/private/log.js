@@ -22,16 +22,16 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
-/* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* global Tree, extend */
+/* - */
 
-'use strict';
 
 (function() {
   // START OF IIFE
 
 
   // -- Module Path
+  const Root = Tree.Log.Public;
 
 
   // -- Local Modules
@@ -78,7 +78,7 @@
 
   // -- Public Static Methods ------------------------------------------------
 
-  LG = {
+  extend(Root, {
 
     /**
      * Dumps, to the console, the logging message.
@@ -91,7 +91,7 @@
      * @returns {}        -,
      * @since 0.0.0
      */
-    /* eslint-disable no-param-reassign, no-console */
+    /* eslint-disable no-console */
     print(log, msg, currentlevel) {
       const levels = _levels()
           , colors = [32, 36, 34, 33, 35, 31, 0]
@@ -132,10 +132,10 @@
         }
       }
     },
-    /* eslint-enable no-param-reassign, no-console */
-  };
+    /* eslint-enable no-console */
+  });
 
 
   // END OF IIFE
 }());
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */

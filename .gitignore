@@ -1,4 +1,6 @@
 .DS_Store
+_old_*
 
 coverage
 node_modules
+.npmrc

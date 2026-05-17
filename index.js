@@ -1,3 +1,2 @@
-'use strict';
-
-module.exports = require('./lib/kzlog');
+import KZlog from './lib/kzlog.mjs';
+export default KZlog;
